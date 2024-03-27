@@ -116,7 +116,7 @@ elif [ "$FLAVOR" == "riru" ]; then
   mkdir "$MODPATH/riru/lib64"
   if [ "$ARCH" = "arm" ] || [ "$ARCH" = "arm64" ]; then
     ui_print "- Extracting arm libraries"
-    extract "$ZIPFILE" "lib/armeabi-v7a/lib$RIRU_MODULE_LIB_NAME.so" "$MODPATH/riru/lib" true
+    extract "$ZIPFILE" "lib/armeabi-v7a/lib$RIRU_MODULE_LIB_NAME.so" "$MODPATH/riru-core/lib" true
 
     if [ "$IS64BIT" = true ]; then
       ui_print "- Extracting arm64 libraries"
@@ -139,12 +139,12 @@ elif [ "$FLAVOR" == "riru" ]; then
     mv "$MODPATH/system/lib/lib$RIRU_MODULE_LIB_NAME.so" "$MODPATH/system/lib/libriru_$RIRU_MODULE_LIB_NAME.so"
     mv "$MODPATH/system/lib64/lib$RIRU_MODULE_LIB_NAME.so" "$MODPATH/system/lib64/libriru_$RIRU_MODULE_LIB_NAME.so"
     if [ "$RIRU_API" -ge 26 ]; then
-      mkdir -p "$MODPATH/riru/lib"
-      mkdir -p "$MODPATH/riru/lib64"
-      touch "$MODPATH/riru/lib/libriru_$RIRU_MODULE_LIB_NAME"
-      touch "$MODPATH/riru/lib64/libriru_$RIRU_MODULE_LIB_NAME"
+      mkdir -p "$MODPATH/riru-core/lib"
+      mkdir -p "$MODPATH/riru-core/lib64"
+      touch "$MODPATH/riru-core/lib/libriru_$RIRU_MODULE_LIB_NAME"
+      touch "$MODPATH/riru-core/lib64/libriru_$RIRU_MODULE_LIB_NAME"
     else
-      mkdir -p "/data/adb/riru/modules/$RIRU_MODULE_LIB_NAME"
+      mkdir -p "/data/adb/modules/riru-core/modules/$RIRU_MODULE_LIB_NAME"
     fi
   fi
 fi
